@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1a2840" />
+  <meta name="description" content="Comprensión lectora galáctica para primaria 1° a 6°" />
+  <link rel="manifest" href="manifest.json" />
+  <title>Comprensión Galáctica — Lectura para Primaria</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700;900&family=Orbitron:wght@500;700;900&family=Nunito:wght@600;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/app.css" />
+</head>
+<body>
+  <div id="stars" aria-hidden="true"></div>
+  <div id="particles" aria-hidden="true"></div>
+
+  <section id="splash" class="screen screen--active">
+
+    <!-- ░░ CAPA DE FONDO: nebulosa + estrellas ░░ -->
+    <div class="nebula" aria-hidden="true"></div>
+    <div class="stars-layer" aria-hidden="true"></div>
+
+    <!-- ░░ ESTRELLAS FUGACES ░░ -->
+    <div class="shooting-star star-1" aria-hidden="true"></div>
+    <div class="shooting-star star-2" aria-hidden="true"></div>
+    <div class="shooting-star star-3" aria-hidden="true"></div>
+
+    <!-- ░░ PLANETAS (8 planetas, como en la imagen) ░░ -->
+
+    <!-- Grande izquierda: planeta azul eléctrico con anillo -->
+    <div class="planet p-electric" aria-hidden="true">
+      <div class="planet__ring p-electric__ring"></div>
+    </div>
+
+    <!-- Grande derecha: planeta verde esmeralda con anillo -->
+    <div class="planet p-emerald" aria-hidden="true">
+      <div class="planet__ring p-emerald__ring"></div>
+    </div>
+
+    <!-- Centro-arriba: explosión solar / sol -->
+    <div class="planet p-sun" aria-hidden="true">
+      <div class="sun-corona" aria-hidden="true"></div>
+    </div>
+
+    <!-- Arriba derecha: planeta de Saturno azul -->
+    <div class="planet p-saturn" aria-hidden="true">
+      <div class="planet__ring p-saturn__ring"></div>
+    </div>
+
+    <!-- Centro derecha: planeta cyan claro -->
+    <div class="planet p-cyan" aria-hidden="true"></div>
+
+    <!-- Arriba izquierda: luna gris -->
+    <div class="planet p-moon" aria-hidden="true"></div>
+
+    <!-- Abajo centro: planeta galaxia / nebulosa (morado-azul) -->
+    <div class="planet p-galaxy" aria-hidden="true"></div>
+
+    <!-- Abajo derecha: planeta teal pequeño -->
+    <div class="planet p-teal" aria-hidden="true"></div>
+
+    <!-- ░░ TARJETA DE CRISTAL — todo el contenido legible aquí ░░ -->
+    <div class="splash__card">
+
+      <!-- Cohete con llamarada -->
+      <div class="splash__rocket-wrap" aria-hidden="true">
+        <div class="splash__rocket">🚀</div>
+        <div class="rocket-flame"></div>
+      </div>
+
+      <!-- Título -->
+      <h1 class="splash__title">
+        <span class="glow-gradient">Comprensión</span>
+        <span class="glow-gradient glow-gradient--alt">Galáctica</span>
+      </h1>
+
+      <p class="splash__tagline">¡Explora, lee y juega en el espacio de las palabras!</p>
+
+      <!-- Mascota con holograma -->
+      <div class="mascot-wrap">
+        <div class="hologram-ring" aria-hidden="true"></div>
+        <div class="hologram-ring hologram-ring--2" aria-hidden="true"></div>
+        <div class="splash__mascot" aria-hidden="true">🤖</div>
+      </div>
+
+      <button type="button" id="btn-start" class="btn btn--mega btn--pulse">🚀 ¡Despegar aventura!</button>
+      <p class="splash__hint">Para niños de 1° a 6° de primaria</p>
+      <p class="splash__copyright" style="font-size: 0.75rem; color: rgba(255,255,255,0.6); margin-top: 1.5rem;">&copy; 2026 Todos los derechos reservados.</p>
+
+    </div><!-- /.splash__card -->
+  </section>
+
+  <section id="student-select" class="screen screen--student-select">
+
+    <!-- ░░ FONDO IGUAL AL INICIO ░░ -->
+    <div class="nebula" aria-hidden="true"></div>
+    <div class="stars-layer" aria-hidden="true"></div>
+
+    <!-- Estrellas fugaces -->
+    <div class="shooting-star star-1" aria-hidden="true"></div>
+    <div class="shooting-star star-2" aria-hidden="true"></div>
+    <div class="shooting-star star-3" aria-hidden="true"></div>
+
+    <!-- Planetas -->
+    <div class="planet p-electric" aria-hidden="true"><div class="planet__ring p-electric__ring"></div></div>
+    <div class="planet p-emerald"  aria-hidden="true"><div class="planet__ring p-emerald__ring"></div></div>
+    <div class="planet p-sun"      aria-hidden="true"><div class="sun-corona"></div></div>
+    <div class="planet p-saturn"   aria-hidden="true"><div class="planet__ring p-saturn__ring"></div></div>
+    <div class="planet p-cyan"     aria-hidden="true"></div>
+    <div class="planet p-moon"     aria-hidden="true"></div>
+    <div class="planet p-galaxy"   aria-hidden="true"></div>
+    <div class="planet p-teal"     aria-hidden="true"></div>
+
+    <header class="top-bar" style="position:relative;z-index:10;">
+      <button type="button" class="btn btn--ghost btn--back" data-back="splash">← Inicio</button>
+    </header>
+    <div class="student-select__hero">
+      <div class="student-select__icon" aria-hidden="true">🚀</div>
+      <h2 class="student-select__title">
+        <span class="glow-gradient">¿Quién</span>
+        <span class="glow-gradient glow-gradient--alt">explora hoy?</span>
+      </h2>
+      <p class="student-select__sub">Elige tu avatar y despega hacia el conocimiento</p>
+    </div>
+    <div class="student-list" id="student-list"></div>
+    <button type="button" id="btn-new-student" class="btn btn--accent btn--wide" style="position:relative;z-index:10;">➕ Nuevo explorador</button>
+  </section>
+
+  <section id="grade-select" class="screen screen--space">
+
+    <!-- ░░ FONDO ESPACIAL ░░ -->
+    <div class="nebula" aria-hidden="true"></div>
+    <div class="stars-layer" aria-hidden="true"></div>
+    <div class="shooting-star star-1" aria-hidden="true"></div>
+    <div class="shooting-star star-2" aria-hidden="true"></div>
+    <div class="planet p-electric" aria-hidden="true"><div class="planet__ring p-electric__ring"></div></div>
+    <div class="planet p-emerald"  aria-hidden="true"><div class="planet__ring p-emerald__ring"></div></div>
+    <div class="planet p-saturn"   aria-hidden="true"><div class="planet__ring p-saturn__ring"></div></div>
+    <div class="planet p-cyan"     aria-hidden="true"></div>
+    <div class="planet p-moon"     aria-hidden="true"></div>
+    <div class="planet p-galaxy"   aria-hidden="true"></div>
+    <div class="planet p-teal"     aria-hidden="true"></div>
+
+    <header class="top-bar">
+      <button type="button" class="btn btn--ghost btn--back" data-back="student-select">← Alumnos</button>
+      <button type="button" class="btn btn--ghost btn--small" id="btn-change-student" title="Cambiar alumno">👤</button>
+      <button type="button" class="btn btn--accent btn--small" id="btn-rewards-grade" title="Tienda de recompensas">🎁</button>
+      <button type="button" class="btn btn--ghost btn--small" id="btn-weekly" title="Mi semana">📊</button>
+      <button type="button" class="btn btn--ghost btn--small" id="btn-options" title="Opciones">⚙️</button>
+      <button type="button" class="btn btn--ghost btn--small" id="btn-teacher" title="Modo maestro">🔒</button>
+      <div class="cp-badge" id="cp-display-grade" title="Comprensión Puntos">✨ <span id="cp-total-grade">0</span> CP</div>
+    </header>
+    <p class="student-active" id="student-active-label"></p>
+    <p class="streak-badge hidden" id="streak-badge"></p>
+    <h2 class="section-title">Elige tu planeta — grado</h2>
+    <p class="section-sub">Cada grado tiene lecturas, juegos y sorpresas</p>
+    <div class="grade-grid" id="grade-grid"></div>
+  </section>
+
+  <section id="grade-hub" class="screen screen--space">
+
+    <!-- ░░ FONDO ESPACIAL ░░ -->
+    <div class="nebula" aria-hidden="true"></div>
+    <div class="stars-layer" aria-hidden="true"></div>
+    <div class="shooting-star star-1" aria-hidden="true"></div>
+    <div class="planet p-electric" aria-hidden="true"><div class="planet__ring p-electric__ring"></div></div>
+    <div class="planet p-emerald"  aria-hidden="true"><div class="planet__ring p-emerald__ring"></div></div>
+    <div class="planet p-saturn"   aria-hidden="true"><div class="planet__ring p-saturn__ring"></div></div>
+    <div class="planet p-cyan"     aria-hidden="true"></div>
+    <div class="planet p-moon"     aria-hidden="true"></div>
+    <div class="planet p-teal"     aria-hidden="true"></div>
+
+    <header class="top-bar">
+      <button type="button" class="btn btn--ghost btn--back" data-back="grade-select">← Grados</button>
+      <div class="cp-badge">✨ <span id="cp-total-hub">0</span> CP</div>
+      <button type="button" class="btn btn--accent btn--small" id="btn-rewards">🎁 Recompensas</button>
+    </header>
+    <h2 class="section-title" id="hub-grade-title">Grado</h2>
+    <p class="hub-progress" id="hub-progress"></p>
+    <div class="hub-grid">
+      <button type="button" class="hub-card hub-card--lectura" data-module="lectura">
+        <span class="hub-card__icon">📖</span>
+        <span class="hub-card__label">Lectura</span>
+        <span class="hub-card__desc">Historias y comprensión</span>
+      </button>
+      <button type="button" class="hub-card hub-card--juegos" data-module="juegos">
+        <span class="hub-card__icon">🎮</span>
+        <span class="hub-card__label">Juegos</span>
+        <span class="hub-card__desc">Memoria, emparejar y más</span>
+      </button>
+      <button type="button" class="hub-card hub-card--ritmo hidden" id="hub-ritmo" data-module="ritmo">
+        <span class="hub-card__icon">🗣️</span>
+        <span class="hub-card__label">Rimas y ritmo</span>
+        <span class="hub-card__desc">Lee en voz alta (solo 1°)</span>
+      </button>
+      <button type="button" class="hub-card hub-card--especial" id="hub-especial" data-module="especial">
+        <span class="hub-card__icon">🌟</span>
+        <span class="hub-card__label">Especiales</span>
+        <span class="hub-card__desc">Lecturas de temporada</span>
+      </button>
+
+      <button type="button" class="hub-card hub-card--anexos" id="hub-anexos" data-module="anexos">
+        <span class="hub-card__icon">📎</span>
+        <span class="hub-card__label">Anexos</span>
+        <span class="hub-card__desc">Archivos del maestro</span>
+      </button>
+    </div>
+  </section>
+
+  <section id="module" class="screen">
+    <header class="top-bar">
+      <button type="button" class="btn btn--ghost btn--back" data-back="grade-hub">← Menú</button>
+      <div class="cp-badge">✨ <span id="cp-total-module">0</span> CP</div>
+    </header>
+    <h2 class="section-title" id="module-title">Módulo</h2>
+    <p class="module-rewards-bar hidden" id="module-rewards-bar" aria-live="polite"></p>
+    <div id="module-content" class="module-content">    </div>
+  </section>
+
+  <section id="weekly" class="screen">
+    <header class="top-bar">
+      <button type="button" class="btn btn--ghost btn--back" data-back="grade-select">← Grados</button>
+      <div class="cp-badge">✨ <span id="cp-total-weekly">0</span> CP</div>
+    </header>
+    <h2 class="section-title">📊 Mi semana</h2>
+    <p class="section-sub">Tu resumen de esta semana</p>
+    <div id="weekly-content" class="weekly-content"></div>
+    <div id="achievements-panel" class="achievements-panel">
+      <h3>🏅 Medallas</h3>
+      <ul id="achievements-list"></ul>
+    </div>
+  </section>
+
+  <section id="options" class="screen">
+    <header class="top-bar">
+      <button type="button" class="btn btn--ghost btn--back" data-back="grade-select">← Grados</button>
+    </header>
+    <h2 class="section-title">⚙️ Opciones</h2>
+    <p class="section-sub">Accesibilidad y tamaño de texto</p>
+    <div class="options-list" id="options-list"></div>
+  </section>
+
+  <section id="teacher" class="screen">
+    <header class="top-bar">
+      <button type="button" class="btn btn--ghost btn--back" data-back="grade-select">← Grados</button>
+    </header>
+    <h2 class="section-title">🔒 Modo maestro</h2>
+    <div id="teacher-gate" class="teacher-gate">
+      <p class="section-sub" id="teacher-pin-sub">Ingresa el PIN (predeterminado: 2024)</p>
+      <input type="password" id="teacher-pin-input" class="teacher-input" maxlength="8" inputmode="numeric" placeholder="****" />
+      <div style="display:flex; gap:0.5rem; justify-content:center; flex-wrap:wrap; margin-top:0.75rem;">
+        <button type="button" id="btn-teacher-enter" class="btn btn--accent">Entrar</button>
+        <button type="button" id="btn-gate-change-pin" class="btn btn--ghost">🔑 Cambiar PIN</button>
+      </div>
+    </div>
+    <div id="teacher-panel" class="teacher-panel hidden">
+      <div id="teacher-students"></div>
+
+      <!-- ░░ GESTIÓN DE ANEXOS ░░ -->
+      <div class="teacher-section">
+        <h3 class="teacher-section__title">📎 Gestionar Anexos por Grado</h3>
+        <p class="section-sub" style="margin-bottom:0.75rem;">Agrega archivos (PDF, imagen) o links para cada grado. Los alumnos podrán descargarlos.</p>
+
+        <div class="anexo-form">
+          <select id="anexo-grade-select" class="teacher-input" style="width:auto; padding:0.5rem 0.75rem;">
+            <option value="1">1° Primero</option>
+            <option value="2">2° Segundo</option>
+            <option value="3">3° Tercero</option>
+            <option value="4">4° Cuarto</option>
+            <option value="5">5° Quinto</option>
+            <option value="6">6° Sexto</option>
+          </select>
+          <input type="text" id="anexo-name" class="teacher-input" placeholder="Nombre del archivo (ej: Tarea semana 1)" />
+          <input type="text" id="anexo-url" class="teacher-input" placeholder="Link del archivo (Google Drive, OneDrive, etc.)" />
+          <label class="btn btn--ghost btn--small" style="cursor:pointer;">
+            📁 O sube un archivo
+            <input type="file" id="anexo-file" accept=".pdf,.png,.jpg,.jpeg,.docx,.xlsx,.pptx" style="display:none;" />
+          </label>
+          <button type="button" id="btn-add-anexo" class="btn btn--accent btn--small">➕ Agregar</button>
+        </div>
+
+        <div id="teacher-anexos-list"></div>
+      </div>
+
+      <button type="button" id="btn-change-pin" class="btn btn--ghost">Cambiar PIN</button>
+    </div>
+  </section>
+
+  <section id="rewards" class="screen">
+    <header class="top-bar">
+      <button type="button" class="btn btn--ghost btn--back" id="btn-rewards-back">← Volver</button>
+      <div class="cp-badge">✨ <span id="cp-total-rewards">0</span> CP</div>
+    </header>
+    <h2 class="section-title">🎁 Tienda Galáctica</h2>
+    <p class="section-sub" id="rewards-grade-sub">Canjea tus CP por recompensas del grado</p>
+    <div class="rewards-grade-picker hidden" id="rewards-grade-picker"></div>
+    <div id="rewards-list" class="rewards-list"></div>
+    <div id="inventory" class="inventory">
+      <h3>Tu inventario</h3>
+      <ul id="inventory-list"></ul>
+    </div>
+  </section>
+
+  <div id="achievement-toast" class="achievement-toast" role="alert" aria-live="assertive">
+    <div class="achievement-toast-icon">🏅</div>
+    <div class="achievement-toast-info">
+      <h4 id="achievement-toast-title">¡Nuevo Logro!</h4>
+      <p id="achievement-toast-desc">Has desbloqueado una medalla galáctica.</p>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden" role="status"></div>
+  <div id="celebration" class="celebration hidden" aria-hidden="true"></div>
+
+  <!-- ░░ ANIMACIÓN COHETE ░░ -->
+  <div id="rocket-overlay" class="rocket-overlay hidden" aria-hidden="true">
+    <div class="rocket-overlay__stars"></div>
+    <div class="rocket-overlay__content">
+      <div class="rocket-overlay__rocket">🚀</div>
+      <div class="rocket-overlay__flame"></div>
+      <p class="rocket-overlay__msg" id="rocket-msg">¡Excelente trabajo!</p>
+      <div class="rocket-overlay__stars-fx">⭐✨🌟💫⭐</div>
+    </div>
+  </div>
+
+  <!-- ░░ MODAL CÓSMICO GALÁCTICO ░░ -->
+  <div id="galactic-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-card">
+      <button type="button" class="modal-close" id="galactic-modal-close" aria-label="Cerrar">&times;</button>
+      <div class="modal-header">
+        <div class="modal-icon" id="galactic-modal-icon">✨</div>
+        <h3 class="modal-title" id="galactic-modal-title">Título</h3>
+        <p class="modal-subtitle hidden" id="galactic-modal-subtitle"></p>
+      </div>
+      <div class="modal-body" id="galactic-modal-body"></div>
+      <div class="modal-footer" id="galactic-modal-footer"></div>
+    </div>
+  </div>
+
+  <script src="js/activities.js"></script>
+  <script src="js/features.js"></script>
+  <script src="js/assets.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
